@@ -15,7 +15,7 @@ instance = {"IINST": "intensite", "IMAX": "intensite", "ISOUSC": "intensite",
             "HCHC": "watt", "HCHP": "watt"}
 
 
-def LireTeleinfo():
+def readTeleinfo():
     while ser.read(1) != chr(2):
         pass
 
@@ -51,7 +51,7 @@ while True:
     time.sleep(1)
     ser.flushInput()
 
-    trames = LireTeleinfo()
+    trames = readTeleinfo()
 
     for trame in trames:
         try:
