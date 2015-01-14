@@ -7,6 +7,8 @@ import socket
 import time
 import serial
 
+DEFAULT_SERIAL = "/dev/ttyAMA0"
+
 hostname = socket.gethostname()
 
 interval = os.getenv("COLLECTD_INTERVAL") or 30
@@ -14,6 +16,11 @@ interval = float(interval)
 
 instance = {"IINST": "intensite", "IMAX": "intensite", "ISOUSC": "intensite",
             "HCHC": "watt", "HCHP": "watt"}
+
+try:
+    serial_device = sys.argv[1]
+except:
+    serial_device = DEFAULT_SERIAL
 
 
 def readTeleinfo():
@@ -38,7 +45,7 @@ def readTeleinfo():
 
 try:
     ser = serial.Serial(
-            port='/dev/ttyAMA0',
+            port=serial_device,
             baudrate=1200,
             parity=serial.PARITY_EVEN,
             stopbits=serial.STOPBITS_ONE,
