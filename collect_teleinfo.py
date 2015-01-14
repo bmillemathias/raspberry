@@ -54,6 +54,7 @@ try:
             stopbits=serial.STOPBITS_ONE,
             bytesize=serial.SEVENBITS)
 except:
+    print "Unable to open device %s" % serial_device
     print sys.exc_info()
     sys.exit(1)
 
