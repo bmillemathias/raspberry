@@ -1,6 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+# Code de collecte des information de telemetrie d'un compteur electrique, base sur
+# http://www.domotique-info.fr/wp-content/uploads/2013/06/teleinfo-mysql.py_.txt
+
 import os
 import sys
 import socket
